@@ -84,6 +84,7 @@ container-run:
 			-v $(ROOT_FOLDER)/$(COMPETITION_NAME):/home/kaggle/$(COMPETITION_NAME) \
 			-p 2222:22 \
 			$(IMAGE_NAME):$(TAG); \
+		docker network connect mlflow_default $(COMPETITION_NAME); \
 	fi
 	@docker exec -it $(COMPETITION_NAME) /bin/bash -c "chown -R kaggle:kaggle /home/kaggle/.vscode-server"
 	@docker exec -it $(COMPETITION_NAME) /bin/bash -c "chmod -R 700 /home/kaggle/.vscode-server"
