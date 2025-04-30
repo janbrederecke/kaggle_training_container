@@ -16,8 +16,11 @@ RUN apt-get update && apt-get install -y \
 # Clean up unnecessary files to reduce image size
 RUN apt clean && rm -rf /var/lib/apt/lists/*
 
-# Install pytorch and related packages
+# Install PyTorch and related packages
 RUN pip3 --no-cache-dir install torch torchvision torchaudio pytorch-lightning
+
+# Install MyPy and Ruff
+RUN pip3 --no-cache-dir install mypy ruff
 
 # Install Kaggle API and MLflow
 RUN pip3 --no-cache-dir install kaggle mlflow-skinny
