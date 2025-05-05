@@ -28,5 +28,5 @@ services:
     env_file: "mlflow.env"
     ports:
       - "5000:5000"
-    command: mlflow server --dev --host 0.0.0.0 --backend-store-uri postgresql+psycopg2://admin:12345678@db:5432/mlflow --artifacts-destination s3://mlartifacts
+    command: mlflow server --dev --host 0.0.0.0 --backend-store-uri postgresql+psycopg2://admin:12345678@db:5432/mlflow --default-artifact-root s3://mlartifacts
 
