@@ -23,8 +23,8 @@ RUN pip3 --no-cache-dir install torch torchvision torchaudio pandas scikit-learn
 # Install MyPy and Ruff
 RUN pip3 --no-cache-dir install mypy ruff
 
-# Install Kaggle API and MLflow
-RUN pip3 --no-cache-dir install kaggle mlflow-skinny
+# Install Kaggle API and MLflow + boto3 for artifact storage
+RUN pip3 --no-cache-dir install kaggle mlflow-skinny boto3
 
 # Create a non-root user
 RUN useradd -m kaggle
