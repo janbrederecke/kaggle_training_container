@@ -17,8 +17,8 @@ RUN apt-get update && apt-get install -y \
 # Clean up unnecessary files to reduce image size
 RUN apt clean && rm -rf /var/lib/apt/lists/*
 
-# Install PyTorch and related packages
-RUN pip3 --no-cache-dir install torch torchvision torchaudio pytorch-lightning
+# Install PyTorch and related packages we always need
+RUN pip3 --no-cache-dir install torch torchvision torchaudio pandas scikit-learn
 
 # Install MyPy and Ruff
 RUN pip3 --no-cache-dir install mypy ruff
@@ -58,3 +58,7 @@ EXPOSE 22
 
 # Start SSH on container launch
 CMD ["/usr/sbin/sshd", "-D"]
+
+# Copy .env variables related to local mlflow into the container
+COPY ./mlflow/mlflow.env /home/kaggle/.env
+RUN chown kaggle:kaggle /home/kaggle/.env

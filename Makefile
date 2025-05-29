@@ -89,6 +89,7 @@ container-run:
 	@docker exec -it $(COMPETITION_NAME) /bin/bash -c "chown -R kaggle:kaggle /home/kaggle/.vscode-server"
 	@docker exec -it $(COMPETITION_NAME) /bin/bash -c "chmod -R 700 /home/kaggle/.vscode-server"
 	@docker exec -it $(COMPETITION_NAME) /bin/bash -c "echo 'cd /home/kaggle/$(COMPETITION_NAME)' >> /home/kaggle/.bashrc"
+	@docker exec -it $(COMPETITION_NAME) /bin/bash -c "echo 'set -a && source ~/.env && set +a' >> /home/kaggle/.bashrc"
 	@docker exec -it --user kaggle $(COMPETITION_NAME) /bin/bash -c "git config --global user.name $(GITHUB_USER) && git config --global user.email $(GITHUB_NO_REPLY_MAIL)"
 	@echo "🚀 Docker container $(COMPETITION_NAME) is up and running!"
 
